@@ -1,0 +1,12 @@
+.buttons{
+    display: flex;
+    justify-content: space-around;
+} 
+
+.example-container{
+    width: 150%;
+}
+
+mat-form-field{
+    width: 100%;
+}

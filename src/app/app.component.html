@@ -1,0 +1,9 @@
+
+<div class="container">
+
+    <app-list-students (selected)="selectedStudent($event)" ></app-list-students> 
+    
+    
+    <app-details-student [student]="student" (saved)="getSaved($event)" (deleted)="getDeleted($event)"></app-details-student>
+
+</div>
