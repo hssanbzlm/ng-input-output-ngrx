@@ -1,4 +1,4 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
 import { ManageStudentService } from '../manage-student.service';
 import { Student } from '../student';
 
@@ -8,15 +8,13 @@ import { Student } from '../student';
   styleUrls: ['./list-students.component.css']
 }) 
 
-export class ListStudentsComponent implements OnInit {
+export class ListStudentsComponent  {
 
-  constructor(private service:ManageStudentService) { } 
+ 
   @Output() selected =new EventEmitter()
-  students:Student[]; 
+  @Input () students;
 
-  ngOnInit(): void { 
-    this.students=this.service.all();
-  } 
+ 
 
   onSelect(student){
     

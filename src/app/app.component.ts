@@ -10,7 +10,9 @@ import { Student } from './student';
 export class AppComponent {
   title = 'test-ngrx'; 
   student:Student;
+  students:Student[];
   constructor(private service:ManageStudentService){
+    this.students=this.service.all();
 
   }
 
