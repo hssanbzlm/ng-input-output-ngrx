@@ -5,27 +5,31 @@ import { Student } from './student';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'test-ngrx'; 
-  student:Student;
-  students:Student[];
-  constructor(private service:ManageStudentService){
-    this.students=this.service.all();
+  title = 'test-ngrx';
+  student: Student;
+  students: Student[];
 
+  constructor(private service: ManageStudentService) {
+    this.students = this.service.all();
   }
 
+  selectedStudent(student) {
+    this.student = student;
+  }
 
-  selectedStudent(student){   
-    this.student=student; 
-  } 
-
-  getSaved(student:Student){ 
-
-     this.service.save(student);
-  } 
-  getDeleted(student:Student){  
+  getSaved(student: Student) {
+    this.service.save(student);
+    this.refresh();
+  }
+  getDeleted(student: Student) {
     this.service.delete(student);
+    this.refresh();
+  }
+
+  refresh() {
+    this.students = this.service.all();
   }
 }

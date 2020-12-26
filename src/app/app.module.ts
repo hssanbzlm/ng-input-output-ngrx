@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from "@angular/forms"
 
 import { AppComponent } from './app.component';
 import { ListStudentsComponent } from './list-students/list-students.component';
@@ -24,8 +25,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    MatButtonModule
-    
+    MatButtonModule,
+    FormsModule
   
   ],
   providers: [],

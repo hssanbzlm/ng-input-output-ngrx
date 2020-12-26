@@ -1,72 +1,58 @@
-import { Injectable } from '@angular/core'; 
+import { Injectable } from '@angular/core';
 
 import { Student } from './student';
-let Students:Student[]=[   
-
+let Students: Student[] = [
   {
-      id:1,
-      name:"hssan",
-      lastName:"Bouzlima"
-  } ,
-  {
-      id:2,
-      name:"Harry",
-      lastName:"Kane"
+    id: 1,
+    name: 'hssan',
+    lastName: 'Bouzlima',
   },
   {
-      id:3,
-      name:"Calvert",
-      lastName:"Lewin"
+    id: 2,
+    name: 'Harry',
+    lastName: 'Kane',
   },
   {
-      id:4,
-      name:"Mohamed",
-      lastName:"Salah"
-  }
-] 
-
+    id: 3,
+    name: 'Calvert',
+    lastName: 'Lewin',
+  },
+  {
+    id: 4,
+    name: 'Mohamed',
+    lastName: 'Salah',
+  },
+];
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ManageStudentService {
+  constructor() {}
 
-  constructor() { } 
-
-
-
-  save(student:Student){   
-    
-    if(Students.indexOf(student)<0) 
-    {
-
-      Students.push(student); 
-    }
-    else 
-    this.update(student); 
-
-  } 
-
-  delete(student:Student){  
-    Students=Students.filter((s)=>s.id!=student.id);  
-
+  save(student: Student) {
+    if (Students.findIndex((s) => s.id == student.id) < 0) {
+      Students.push(student);
+    } else this.update(student);
   }
 
-  update(student:Student){  
-    Students=Students.map((s)=>{
-      if(s.id==student.id){
+  delete(student: Student) {
+    Students = Students.filter((s) => s.id != student.id);
+  }
+
+  update(student: Student) {
+    Students = Students.map((s) => {
+      if (s.id == student.id) {
         return student;
-      } else {return s}
-
-    })
-
+      } else {
+        return s;
+      }
+    });
   }
-  find(id){  
-
-   return Students.find((s)=>s.id==id);
-
-  } 
-  all(){ 
+  find(id) {
+    return Students.find((s) => s.id == id);
+  }
+  all() {
     return Students;
   }
 }

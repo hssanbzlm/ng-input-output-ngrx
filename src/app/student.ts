@@ -1,6 +1,6 @@
 export interface Student { 
     
-    id:number,
+    id:number|null,
     name:string,
     lastName:string,
 }
