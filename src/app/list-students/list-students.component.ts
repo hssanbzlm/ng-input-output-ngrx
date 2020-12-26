@@ -1,29 +1,29 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
+import { Observable } from 'rxjs';
 import { ManageStudentService } from '../manage-student.service';
 import { Student } from '../student';
 
 @Component({
   selector: 'app-list-students',
   templateUrl: './list-students.component.html',
-  styleUrls: ['./list-students.component.css']
-}) 
-
+  styleUrls: ['./list-students.component.css'],
+})
 export class ListStudentsComponent implements OnInit {
+  constructor(private service: ManageStudentService) {}
+  @Output() selected = new EventEmitter();
+  @Input() students: Observable<Student[]>;
 
-  constructor(private service:ManageStudentService) { } 
-  @Output() selected =new EventEmitter()
-  students:Student[]; 
+  ngOnInit(): void {}
 
-  ngOnInit(): void { 
-    this.students=this.service.all();
-  } 
-
-  onSelect(student){
-    
-    this.selected.emit(student)
+  onSelect(student) {
+    this.selected.emit(student);
   }
-
-
-
-
 }
