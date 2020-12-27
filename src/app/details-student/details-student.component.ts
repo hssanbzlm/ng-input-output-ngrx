@@ -17,11 +17,11 @@ import { Student } from '../student';
 export class DetailsStudentComponent implements OnInit {
   constructor() {}
   currentStudent: Student;
+  originalStudent: Student;
 
-  @Input() set student(value) {
-    if (value) {
-      this.currentStudent = Object.assign({}, value);
-    }
+  @Input() set student(value: Student) {
+    this.currentStudent = Object.assign({}, value);
+    this.originalStudent = Object.assign({}, value);
   }
   @Output() saved = new EventEmitter();
   @Output() deleted = new EventEmitter();
@@ -29,17 +29,17 @@ export class DetailsStudentComponent implements OnInit {
     this.currentStudent = { id: null, name: '', lastName: '' };
   }
 
-  clickSave(student) {
-    console.log('FROM DETAILS');
-    console.log(student);
-    this.saved.emit(student);
+  clickSave(student: Student) {
+    const oldNewStudents = [student, this.originalStudent]; // to compare later and decide if update or add
+    this.saved.emit(oldNewStudents);
     this.Cancel();
   }
   clickDelete(student) {
     this.deleted.emit(student);
+    this.Cancel();
   }
 
   Cancel() {
-    this.student = { id: null, name: '', lastName: '' };
+    this.currentStudent = { id: null, name: '', lastName: '' };
   }
 }

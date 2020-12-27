@@ -3,7 +3,7 @@ import { Student } from '../../student';
 
 export const ADD_STUDENT = '[Student] Add';
 export const DELETE_STUDENT = '[Student] Delete';
-export const SAVE_STUDENT = '[Student] Save';
+export const UPDATE_STUDENT = '[Student] Update';
 
 export class AddStudent implements Action {
   constructor(public payload: Student) {}
@@ -15,9 +15,9 @@ export class DeleteStudent implements Action {
   readonly type = DELETE_STUDENT;
 }
 
-export class SaveStudent implements Action {
+export class UpdateStudent implements Action {
   constructor(public payload: Student) {}
-  readonly type = SAVE_STUDENT;
+  readonly type = UPDATE_STUDENT;
 }
 
-export type Actions = AddStudent | DeleteStudent | SaveStudent;
+export type Actions = AddStudent | DeleteStudent | UpdateStudent;

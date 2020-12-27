@@ -35,12 +35,11 @@ export function reducer(
     case StudentActions.DELETE_STUDENT:
       return [...state.filter((s) => s.id != action.payload.id)];
 
-    case StudentActions.SAVE_STUDENT:
-      state.map((s) => {
-        s.id == action.payload.id ? action.payload : s;
-      });
-
-      return [...state];
+    case StudentActions.UPDATE_STUDENT:
+      return [
+        ...state.filter((s) => s.id != action.payload.id),
+        action.payload,
+      ];
     default:
       return state;
   }
